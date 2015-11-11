@@ -1,0 +1,211 @@
+<div id = "searchHeader" class="jumbotron container-fluid pagination-centered text-center">
+	<h2>Find and analyze your vehicle  </h2><span class="glyphicon glyphicon-search"></span>
+</div>
+<section id="search-single" class="col-md-12 col-xs-12 text-center">
+	<!-- Dropdown selection menus -->
+	<div class="row">
+		<h3> Step 1: Use the following dropdown menus to identify your vehicle </h3>
+		<hr />
+		<div class="col-md-4 col-md-offset-1 col-xs-8 col-xs-offset-2">
+			<img id="" class="img-responsive img-rounded" src="images/whiteCar.png">
+		</div>
+		<div class="col-md-4 col-md-offset-2 col-xs-8 col-xs-offset-2 well">
+			<form>
+				<label>Car Year</label>
+				<select class="form-control" ng-model="year" ng-change="getCars(year)">
+					<option></option>
+					<option value="1995">1995</option>
+					<option value="1996">1996</option>
+					<option value="1997">1997</option>
+					<option value="1998">1998</option>
+					<option value="1999">1999</option>
+					<option value="2000">2000</option>
+					<option value="2001">2001</option>
+					<option value="2002">2002</option>
+					<option value="2003">2003</option>
+					<option value="2004">2004</option>
+					<option value="2005">2005</option>
+					<option value="2006">2006</option>
+					<option value="2007">2007</option>
+					<option value="2008">2008</option>
+					<option value="2009">2009</option>
+					<option value="2010">2010</option>
+					<option value="2011">2011</option>
+					<option value="2012">2012</option>
+					<option value="2013">2013</option>
+					<option value="2014">2014</option>
+					<option value="2015">2015</option>
+				</select>
+			</form>
+			<form>
+				<label>Car Manufacturer</label>
+				<select class="form-control" ng-model="carMake" ng-options="car.make for car in cars | unique: 'make'" ng-change="testMake(carMake)">
+					<option></option>
+				</select>
+			</form>
+			<form>
+				<label>Car Model</label>
+				<select class="form-control" ng-model="carModel" ng-options="car.model for car in cars | filterBy:['make']: carMake.make | unique: 'model'">
+					<option></option>
+				</select>
+			</form>
+			<form>
+				<label>Vehicle Class</label>
+				<select class="form-control" ng-model="vehicleClass" ng-options="car.vehicle_class group by car.model for car in cars | filterBy:['make']: carMake.make | filterBy:['model']: carModel.model | unique: 'vehicle_class'">
+					<option></option>
+				</select>
+			</form>
+			<a class="btn btn-md btn-info" ng-disabled="!vehicleClass" ng-click="generateCar(year,carMake, carModel, vehicleClass)">Select Car</a>
+			</br>
+		</div>
+	</div>
+	<!-- Specify type of chose vehicle -->
+	<div class="row resultsAnimate" ng-if="resultsBool">
+		<h3> Step 2: Choose your {{carString}}</h3>
+		<hr />
+		<div class="col-md-5 col-md-offset-1 col-xs-8 col-xs-offset-2 well table-responsive">
+			<table class="table table-striped table-bordered table-hover sameHeight">
+				<thead>
+					<tr>
+						<th>Engine Size</th>
+						<th>Cylinders</th>
+						<th>Transmission</th>
+						<th>Fuel Type</th>
+					</tr>
+				</thead>
+				<tbody data-link="row" class="rowlink">
+					<tr ng-repeat="selectedCar in selectedCars" ng-class="{'selected': $index == selectedRow}" ng-click="setClickedRow($index)">
+						<!--<td><a ng-href="#/carDetails/{{selectedCars[$index]._id}}">{{selectedCar.engine_size}}</a></td>-->
+						<td>{{selectedCar.engine_size}}</td>
+						<td>{{selectedCar.cylinders}}</td>
+						<td>{{selectedCar.transmission}}</td>
+						<td id="fuel">{{selectedCar.fuel_type}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-md-4 col-md-offset-1 col-xs-8 col-xs-offset-2">
+			<div class="container-fluid lol-container well">
+				<img id="lol" class="img-responsive img-rounded" src="">
+			</div>
+		</div>
+	</div>
+	<!-- Results section - Fuel Consumption and Emissions -->
+	<div class="row resultsSection resultsAnimate"  ng-if="resultsBool">
+		<div class="row">
+			<div class="col-md-5">
+				<h2>Fuel Consumption</h2><span class="glyphicon glyphicon-tint"></span>
+				<hr />
+				<div class="well">
+					<h4>City (L/100 KM)</h4>
+					<progressbar max="fcMax" value="inspectCar.fc_city"><span style="color:white; white-space:nowrap;">{{inspectCar.fc_city}}</span></progressbar>
+					<h4>Highway (L/100 KM)</h4>
+					<progressbar max="fcMax" value="inspectCar.fc_hwy"><span style="color:white; white-space:nowrap;">{{inspectCar.fc_hwy}}</span></progressbar>
+					<h4>Combined (L/100 KM)</h4>
+					<progressbar max="fcMax" value="inspectCar.fc_comb"><span style="color:white; white-space:nowrap;">{{inspectCar.fc_comb}}</span></progressbar>
+					<h4>Combined (mpg)</h4>
+					<progressbar max="fcMaxMpg" value="inspectCar.fc_comb_mpg"><span style="color:white; white-space:nowrap;">{{inspectCar.fc_comb_mpg}}</span></progressbar>
+				</div>
+			</div>
+			<div class="col-md-5 col-md-offset-2">
+				<h2>Fuel Costs</h2><span class="glyphicon glyphicon-usd"></span>
+				<hr />
+				<div class="col-md-4 well">
+					<form class="form-inline">
+						<label>Annual distance driven (KM): </label>
+						<div class="form-group" name="myform">
+							<input type="number" class="form-control" ng-model="carCost.annualDistance">
+						</div>
+						<label>City driving (%): </label>
+						<div class="form-group">
+							<input type="number" class="form-control" ng-model="carCost.cityPercent">
+						</div>
+						
+						<label>Highway driving (%): </label>
+						<div class="form-group">
+							<input type="number" class="form-control" ng-model="carCost.hwyPercent">
+						</div>
+						
+						<label>Gas Price (¢/L): </label>
+						<div class="form-group">
+							<input type="number" class="form-control" ng-model="carCost.gasPrice">
+						</div>
+						<br />
+					</form>
+					<a class="btn btn-info" ng-click="calculateCost()">Recalculate Cost</a>
+				</div>
+				<div class="col-md-6 col-md-offset-2 well">
+					<h3>Annual cost of gas</h3>
+					<hr />
+					<h4><strong>${{annualCost}}</strong></h4>
+					<br />
+					<h3>Cost per KM</h3>
+					<hr />
+					<h4><strong>{{costPerKm}} $/KM</strong></h4>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-5">
+				<h2>Emissions</h2><span class="glyphicon glyphicon-tree-deciduous"></span>
+				<hr />
+				<div class="well">
+					<h4>Combined (g/KM)</h4>
+					<progressbar max="emissionsMax" value="inspectCar.emissions"><span style="color:white; white-space:nowrap;">{{inspectCar.emissions}}</span></progressbar>
+				</div>
+			</div>
+			<div class="col-md-5 col-md-offset-2">
+				<h2>Carbon Tax</h2><span class="glyphicon glyphicon-piggy-bank"></span>
+				<h4>(For residents of British Columbia or Quebec)</h4>
+				<hr />
+				<div class="col-md-5 well">
+					<form>
+						<label>Province</label>
+						<select class="form-control" ng-model="carbonProvince" ng-change = "calculateCarbonTax(carbonProvince)">
+							<option></option>
+							<option ng-value="British Columbia">British Columbia</option>
+							<option ng-value="Quebec">Quebec</option>
+						</select>
+					</form>
+					<table class="table table-bordered" ng-if="britishColumbia">
+						<thead>
+							<tr>
+								<th>Gas Type</th>
+								<th>Tax Rate (¢/L)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Gasoline</td>
+								<td>6.67</td>
+							</tr>
+							<tr>
+								<td>Diesel</td>
+								<td>7.67</td>
+							</tr>
+						</tbody>
+					</table>
+					<table class="table table-striped table-bordered" ng-if="quebec">
+						<thead>
+							<tr>
+								<th>Gas Type</th>
+								<th>Tax Rate (¢/L)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Gasoline</td>
+								<td>0.80</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-md-6 col-md-offset-1 well">
+					<h3>Annual carbon tax</h3>
+					<hr />
+					<h4><strong>${{carbonCost}}</strong></h4>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

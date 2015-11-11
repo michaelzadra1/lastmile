@@ -1,0 +1,19 @@
+.carType.ng-enter {
+    animation: fadeOutLeftBig 0.4s;
+}
+.carType.ng-leave {
+    animation: fadeInLeftBig 0.4s;
+}
+
+.resultsAnimate.ng-enter {
+  -webkit-animation: bounceInLeft 1s;
+  -moz-animation: bounceInLeft 1s;
+  -o-animation: bounceInLeft 1s;
+  animation: bounceInLeft 1s;
+}
+.resultsAnimate.ng-leave {
+  -webkit-animation: bounceOutRight 1s;
+  -moz-animation: bounceOutRight 1s;
+  -o-animation: bounceOutRight 1s;
+  animation: bounceOutRight 1s;
+}

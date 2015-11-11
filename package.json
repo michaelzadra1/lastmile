@@ -1,0 +1,32 @@
+{
+  "name": "LastMile",
+  "version": "1.0.0",
+  "description": "CISC 490 - Entrepreneurship Class",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "express": "^4.13.1",
+    "gulp": "^3.9.0",
+    "gulp-webserver": "^0.9.1",
+    "body-parser": "^1.13.3",
+    "mongodb": "^1.4.39",
+    "gulp-less": "^3.0.3",
+    "mongoskin": "^1.4.13",
+    "gulp-util": "^3.0.6",
+    "mongojs": "^1.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelzadra1/LastMile.git"
+  },
+  "author": "Michael Zadra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michaelzadra1/LastMile/issues"
+  },
+  "homepage": "https://github.com/michaelzadra1/LastMile#readme"
+}
