@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'angular.filter']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap']);
 
 // Routing
 
@@ -13,14 +13,11 @@ myApp.config(['$routeProvider',
                 templateUrl: 'partials/search.html',
                 controller: 'SearchController'
             })
-            .when('/carDetails/:carId', {
-                templateUrl: 'partials/carDetails.html',
-                controller: 'SearchController'
-            })
             .when('/about', {
                 templateUrl: 'partials/about.html',
                 controller: 'AboutController'
             })
+            // Default Page
             .otherwise({
                 redirectTo: '/home'
             });
