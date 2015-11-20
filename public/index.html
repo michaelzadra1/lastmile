@@ -1,35 +1,34 @@
 <!DOCTYPE>
-<html class = "full" ng-app="myApp">
+<html ng-app="myApp">
+
 <head>
-	<title>MEAN cars</title>
+  <title>Last Mile</title>
 
-	<!-- Angular libraries -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular-route.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular-animate.js"></script>
+  <!-- Angular libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular-route.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular-animate.js"></script>
 
 
-	<!-- Bootstrap & CSS -->
-	<link href="css/bootstrap.css" rel="stylesheet">
+  <!-- Bootstrap & CSS -->
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/agency.css" rel="stylesheet">
   <link href="css/custom.css" rel="stylesheet">
   <link href="css/business-frontpage.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css" />
   <link href="css/ngAnimate.css" rel="stylesheet">
-  
+
 
   <!-- Bootstrap JS -->
   <script src="js/lib/jquery.min.js"></script>
   <script src="js/lib/bootstrap.js"></script>
- 
- <!-- Angular-UI -->
- <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap-tpls.min.js"></script>
 
- <!-- Extended bootstrap components -->
+  <!-- Angular-UI -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap-tpls.min.js"></script>
+
+  <!-- Extended bootstrap components -->
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
   <script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
-
-  <!--Google Image Search API -->
-  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
   <!-- Controllers -->
   <script src="js/app.js"></script>
@@ -44,9 +43,25 @@
 
 <body class="preload">
   <!-- Navbar -->
-	<section class="container" id="main-navbar" ng-include="'partials/navbar.html'"></section>
+  <!--<section class="container" id="main-navbar" ng-include="'partials/navbar.html'"></section>-->
+
+  <!-- Buisness Header -->
+  <!--<header class="business-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h1 class="tagline">Last Mile</h1>
+
+        </div>
+      </div>
+    </div>
+  </header>-->
+
   <!-- Set up view animation -->
-  <section id="{{pageClass}}" ng-view></section>
+  <section class="background" id="{{pageClass}}" ng-view>
+
+  </section>
 
 </body>
+
 </html>

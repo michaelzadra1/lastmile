@@ -4,19 +4,25 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-body {
-    padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-}
+
 
 /* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
 
 .business-header {
-    height: 400px;
-    background: url('http://smartrules.nl/wp-content/uploads/2015/05/slide-appian.jpg') center center no-repeat scroll;
+    height:18em;
+    /* Opaque background with color tint */
+      background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.45), 
+      rgba(0, 0, 0, 0.45)
+    ),
+    url('http://graymattermarketing.com/wp-content/uploads/2015/03/pbr3.jpg');
+
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+    opacity: 0.9;
 }
 
 /* Customize the text color and shadow color and to optimize text legibility. */
