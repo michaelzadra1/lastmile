@@ -1,5 +1,19 @@
+/*Sans-Serif is the current font */
+/* Ariel Font */
+/*h1, h2, h3, h4, h5, h6 {
+    font-family: 'Ariel';
+}
+p, div {
+    font-family: 'Ariel Narrow';
+}*/
+
 #logo {
     max-width: 500px;
+}
+
+.paragraphPicture {
+    max-width: 300px;
+    min-width: 250px;
 }
 
 hr {
@@ -29,29 +43,21 @@ hr {
 
     
 }
-.well h1,h2,h3,h4,h5{
+.well h1,h2,h3,h4,h5,p{
     color: #000;
 }
 
-.call-to-action {
-    padding-top: 0px;
-    padding: 30px;
-    color: #000;
-    background-color: #eee;
-}
 
-.call-to-action h1,
-h2,
-h3,
-h4 {
-    font-weight: 300;
-    line-height: 1.4;
-}
 /* callout-dark */
 .callout-dark {
     padding: 30px;
     color: #fff;
-    background-color: #252525;
+    background:linear-gradient(
+      rgba(0, 0, 0, 0.65), 
+      rgba(0, 0, 0, 0.65)
+    );
+    border-radius: 20px;
+    
 }
 
 .callout-dark h1,
@@ -63,20 +69,17 @@ h4 {
 }
 
 .callout-dark p {
-    color: #B1B1B1;
+    color: #000;
     font-size: 17px;
 }
-
-.callout-mage {
-    padding: 30px;
-    background-color: #743C58;
-    color: #fff;
-}
-
 .callout-red {
     padding: 30px;
     color: #fff;
-    background-color: #FF4C4C;
+    background:linear-gradient(
+      rgba(218, 0, 0, 0.65), 
+      rgba(218, 0, 0, 0.65)
+    );
+    border-radius: 20px;
 }
 
 .callout-red h1,
@@ -90,7 +93,11 @@ h4 {
 .callout-blue {
     padding: 30px;
     color: #fff;
-    background-color: #004664;
+    background:linear-gradient(
+      rgba(0, 32, 96, 0.65), 
+      rgba(0, 32, 96, 0.65)
+    );
+    border-radius: 20px;
 }
 
 .callout-blue h1,
