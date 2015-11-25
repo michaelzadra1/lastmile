@@ -9,14 +9,6 @@ myApp.config(['$routeProvider',
                 templateUrl: 'partials/home.html',
                 controller: 'HomeController'
             })
-            .when('/search', {
-                templateUrl: 'partials/search.html',
-                controller: 'SearchController'
-            })
-            .when('/about', {
-                templateUrl: 'partials/about.html',
-                controller: 'AboutController'
-            })
             // Default Page
             .otherwise({
                 redirectTo: '/home'

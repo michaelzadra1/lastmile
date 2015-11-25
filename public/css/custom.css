@@ -1,11 +1,11 @@
 /*Sans-Serif is the current font */
 /* Ariel Font */
-/*h1, h2, h3, h4, h5, h6 {
-    font-family: 'Ariel';
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Arial';
 }
 p, div {
-    font-family: 'Ariel Narrow';
-}*/
+    font-family: 'Arial Narrow';
+}
 
 #logo {
     max-width: 500px;
@@ -37,7 +37,7 @@ hr {
       background: center repeat, 
     linear-gradient(
       rgba(238, 238, 238, 0.6), 
-      rgba(238, 238, 238, 0.3)
+      rgba(238, 238, 238, 0.6)
     ),
     url('http://www.hdwallpapers.in/download/empire_state_city-1920x1080.jpg');
 
@@ -70,7 +70,6 @@ h4 {
 
 .callout-dark p {
     color: #000;
-    font-size: 17px;
 }
 .callout-red {
     padding: 30px;
